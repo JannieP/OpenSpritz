@@ -96,7 +96,7 @@ function spritzify(input){
     for (var i=0; i<all_words.length; i++){
 
         if(all_words[i].indexOf('.') != -1){
-            temp_words[t] = all_words[i].replace('.', '&#8226;');
+            //temp_words[t] = all_words[i].replace('.', '&#8226;');
         }
 
         // Double up on long words and words with commas.
@@ -174,71 +174,40 @@ function spritzify(input){
 // Find the red-character of the current word.
 function pivot(word){
     var length = word.length;
+    var start = '';
+    var end = '';
+    var startPadding = '';
+    var endPadding = '';
 
     // Longer words are "right-weighted" for easier readability.
     if(length<6){
+        start = word.slice(0, word.length/2);
+        end = word.slice(word.length/2, word.length);
+    }else{
 
-        var bit = 1;
-        while(word.length < 22){
-            if(bit > 0){
-                word = word + '.';
-            }
-            else{
-                word = '.' + word;
-            }
-            bit = bit * -1;
-        }
-
-        var start = '';
-        var end = '';
-        if((length % 2) === 0){
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        } else{
-            start = word.slice(0, word.length/2);
-            end = word.slice(word.length/2, word.length);
-        }
+        //Janniep: to stick to the right weightedness of longer words, I am dividing by 3
+        //might need to do fixes for odd numbers
+        start = word.slice(0, word.length/3);
+        end = word.slice(word.length/3, word.length);
 
     }
 
-    else{
-
-        //Janniep: There seems to be a problem with longer words here. especially if special characters are hexed
-        //This assumes that the max word size is 22-7
-        //lets rather split the difference. and if the word is longer than this 22 then just show it all
-        // Will remove the comment in next commit.
-
-        word.replace('&#8226;', '.');
-
-        var tail = 22 - (word.length);
-        
-        word.replace('.','&#8226;');
-        
-        if (tail <=2){
-           word = ('.'.repeat(tail/2)) + word + ('.'.repeat(tail/2));
-        }else{
-           word = '' + word + '';
-        }
-
-        var start = word.slice(0, word.length/2);
-        var end = word.slice(word.length/2, word.length);
-
+    var padding = 22 - length;
+    if (padding >=2){
+       startPadding  = endPadding = ('.'.repeat(tail/2));
     }
+
+    startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
     
     var result;
-    result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
+    result = "<span class='spritz_start'>" + startPadding + start.slice(0, start.length -1);
     result = result + "</span><span class='spritz_pivot'>";
     result = result + start.slice(start.length-1, start.length);
     result = result + "</span><span class='spritz_end'>";
-    result = result + end;
+    result = result + end + endPadding;
     result = result + "</span>";
-
-
-    result = result.replace(/\./g, "<span class='invisible'>.</span>");
-    //Janniep: the original replace value does not display correctly so lets just fix it here
-    result.replace('&#8226;', '.');
     
-
     return result;
 }
 
