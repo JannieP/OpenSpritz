@@ -194,7 +194,7 @@ function pivot(word){
 
     var padding = 22 - length;
     if (padding >=2){
-       startPadding  = endPadding = ('.'.repeat(tail/2));
+       startPadding  = endPadding = ('.'.repeat(padding/2));
     }
 
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
