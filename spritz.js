@@ -19,7 +19,7 @@ function create_spritz(){
 
             // I suppose it's better to add that to spritz.html
             $('#spritz_selector')
-            .after('<input type="range" id="spritz_slider" min="1" max="10000" value="1">')
+            .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
             .after('<button type="button" id="spritz_toggle">Play</button>');
         },'html');
     };
@@ -199,13 +199,6 @@ function pivot(word){
             end = word.slice(word.length/2, word.length);
         }
 
-        var result;
-        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='spritz_pivot'>";
-        result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='spritz_end'>";
-        result = result + end;
-        result = result + "</span>";
     }
 
     else{
@@ -215,7 +208,11 @@ function pivot(word){
         //lets rather split the difference. and if the word is longer than this 22 then just show it all
         // Will remove the comment in next commit.
 
+        word.replace('&#8226;', '.');
+
         var tail = 22 - (word.length);
+        
+        word.replace('.','&#8226;');
         
         if (tail <=2){
            word = ('.'.repeat(tail/2)) + word + ('.'.repeat(tail/2));
@@ -226,17 +223,21 @@ function pivot(word){
         var start = word.slice(0, word.length/2);
         var end = word.slice(word.length/2, word.length);
 
-        var result;
-        result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
-        result = result + "</span><span class='spritz_pivot'>";
-        result = result + start.slice(start.length-1, start.length);
-        result = result + "</span><span class='spritz_end'>";
-        result = result + end;
-        result = result + "</span>";
-
     }
+    
+    var result;
+    result = "<span class='spritz_start'>" + start.slice(0, start.length -1);
+    result = result + "</span><span class='spritz_pivot'>";
+    result = result + start.slice(start.length-1, start.length);
+    result = result + "</span><span class='spritz_end'>";
+    result = result + end;
+    result = result + "</span>";
+
 
     result = result.replace(/\./g, "<span class='invisible'>.</span>");
+    //Janniep: the original replace value does not display correctly so lets just fix it here
+    result.replace('&#8226;', '.');
+    
 
     return result;
 }
