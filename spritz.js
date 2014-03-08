@@ -19,7 +19,7 @@ function create_spritz(){
 
             // I suppose it's better to add that to spritz.html
             $('#spritz_selector')
-            .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
+            .after('<input type="range" id="spritz_slider" min="1" max="10000" value="1">')
             .after('<button type="button" id="spritz_toggle">Play</button>');
         },'html');
     };
