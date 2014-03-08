@@ -210,8 +210,18 @@ function pivot(word){
 
     else{
 
-        var tail = 22 - (word.length + 7);
-        word = '.......' + word + ('.'.repeat(tail));
+        //Janniep: There seems to be a problem with longer words here. especially if special characters are hexed
+        //This assumes that the max word size is 22-7
+        //lets rather split the difference. and if the word is longer than this 22 then just show it all
+        // Will remove the comment in next commit.
+
+        var tail = 22 - (word.length);
+        
+        if (tail <=2){
+           word = ('.'.repeat(tail/2)) + word + ('.'.repeat(tail/2));
+        }else{
+           word = '' + word + '';
+        }
 
         var start = word.slice(0, word.length/2);
         var end = word.slice(word.length/2, word.length);
