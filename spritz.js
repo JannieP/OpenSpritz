@@ -186,7 +186,6 @@ function pivot(word){
     }else{
 
         //Janniep: to stick to the right weightedness of longer words, I am dividing by 3
-        //might need to do fixes for odd numbers
         start = word.slice(0, word.length/3);
         end = word.slice(word.length/3, word.length);
 
@@ -194,7 +193,12 @@ function pivot(word){
 
     var padding = 22 - length;
     if (padding >=2){
-       startPadding  = endPadding = ('.'.repeat(padding/2));
+       if (padding % 2 === 0){
+          startPadding  = endPadding = ('.'.repeat(padding/2));
+       }else{
+          startPadding  = ('.'.repeat((padding+1)/2));
+          endPadding = ('.'.repeat((padding-1)/2));
+       }
     }
 
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
