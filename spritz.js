@@ -180,16 +180,16 @@ function pivot(word){
     var endPadding = '';
 
     // Longer words are "right-weighted" for easier readability.
-    if(length<6){
+    //if(length<6){
         start = word.slice(0, word.length/2);
         end = word.slice(word.length/2, word.length);
-    }else{
+    //}else{
 
         //Janniep: to stick to the right weightedness of longer words, I am dividing by 3
-        start = word.slice(0, word.length/3);
-        end = word.slice(word.length/3, word.length);
+//        start = word.slice(0, word.length/3);
+//        end = word.slice(word.length/3, word.length);
 
-    }
+//    }
 
     var padding = 22 - length;
     if (padding >=2){
