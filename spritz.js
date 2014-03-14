@@ -228,8 +228,8 @@ function pivot(word){
           startPadding  = ('.'.repeat((padding/2)+ bestLetterDiff));
           endPadding = ('.'.repeat((padding/2)- bestLetterDiff));
        }else{
-          startPadding  = ('.'.repeat(((padding)/2)+ bestLetterDiff));
-          endPadding = ('.'.repeat(((padding-1)/2)+ bestLetterDiff));
+          startPadding  = ('.'.repeat(((padding+1)/2)+ bestLetterDiff-1));
+          endPadding = ('.'.repeat(((padding-1)/2)+ bestLetterDiff+1));
        }
     }
     
