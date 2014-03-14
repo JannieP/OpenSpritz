@@ -180,17 +180,35 @@ function pivot(word){
     var startPadding = '';
     var endPadding = '';
 
-    // Longer words are "right-weighted" for easier readability.
-    //if(length<6){
-        start = word.slice(0, word.length/2);
-        end = word.slice(word.length/2, word.length);
-    //}else{
+    var bestLetter = 1;
+    switch (length) {
+        case 1:
+            bestLetter = 1; // first
+            break;
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            bestLetter = 2; // second
+            break;
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            bestLetter = 3; // third
+            break;
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+            bestLetter = 4; // fourth
+            break;
+        default:
+            bestLetter = 5; // fifth
+    };
 
-        //Janniep: to stick to the right weightedness of longer words, I am dividing by 3
-//        start = word.slice(0, word.length/3);
-//        end = word.slice(word.length/3, word.length);
-
-//    }
+    start = word.slice(0, bestLetter);
+    end = word.slice(bestLetter, word.length);
 
     var padding = 22 - length;
     if (padding >=2){
