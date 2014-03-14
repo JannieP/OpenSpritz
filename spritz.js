@@ -214,9 +214,9 @@ function pivot(word){
     var bestLetterDiff;
 
     if (length % 2 === 0){
-       preMiddle  = ('.'.repeat(length/2));
+       preMiddle  = (length/2);
     }else{
-       preMiddle  = ('.'.repeat((length+1)/2));
+       preMiddle  = ((length+1)/2);
     }
 
     bestLetterDiff = preMiddle - bestLetter;
