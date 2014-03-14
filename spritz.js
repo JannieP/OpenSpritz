@@ -208,7 +208,19 @@ function pivot(word){
     };
 
     start = word.slice(0, bestLetter);
-    end = word.slice(bestLetter, word.length);
+    end = word.slice(bestLetter, length);
+
+    var preMiddle;
+    var bestLetterDiff;
+
+    if (length % 2 === 0){
+       preMiddle  = ('.'.repeat(length/2));
+    }else{
+       preMiddle  = ('.'.repeat((length+1)/2));
+    }
+
+    bestLetterDiff = preMiddle - bestLetter;
+
 
     var padding = 22 - length;
     if (padding >=2){
@@ -219,6 +231,9 @@ function pivot(word){
           endPadding = ('.'.repeat((padding-1)/2));
        }
     }
+    
+    startPadding = startPadding + bestLetterDiff;
+    endPadding = endPadding - bestLetterDiff;
 
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
