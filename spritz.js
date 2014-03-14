@@ -21,11 +21,7 @@ function create_spritz(){
                 $("body").prepend(data);
             }
 
-            // I suppose it's better to add that to spritz.html
-            $('#spritz_selector')
-            .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
-            .after('<button type="button" id="spritz_toggle">Play</button>')
-            .after('<input type="text" id="spritz_readability_token"/>');
+            
         },'html');
     };
 
