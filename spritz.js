@@ -11,8 +11,8 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-        //$.get("https://raw.github.com/JannieP/OpenSpritz/master/spritz.html", function(data){
-        $.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+        $.get("https://rawgithub.com/JannieP/OpenSpritz/master/spritz.html", function(data){
+        //$.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
        
 
             if (!($("#spritz_container").length) ) {
