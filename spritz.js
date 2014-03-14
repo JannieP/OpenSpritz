@@ -222,7 +222,7 @@ function pivot(word){
     bestLetterDiff = preMiddle - bestLetter;
 
 
-    var padding = 23 - length;
+    var padding = 22 - length;
     
     if (padding >=2){
        if (padding % 2 === 0){
