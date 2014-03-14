@@ -226,11 +226,11 @@ function pivot(word){
     
     if (padding >=2){
        if (padding % 2 === 0){
-          startPadding  = ('.'.repeat((padding/2)+ bestLetterDiff));
-          endPadding = ('.'.repeat((padding/2)- bestLetterDiff));
+          startPadding  = ('.'.repeat((padding/2)));
+          endPadding = ('.'.repeat((padding/2)));
        }else{
-          startPadding  = ('.'.repeat(((padding+1)/2)+ bestLetterDiff-1));
-          endPadding = ('.'.repeat(((padding-1)/2)+ bestLetterDiff+1));
+          startPadding  = ('.'.repeat(((padding+1)/2)));
+          endPadding = ('.'.repeat(((padding-1)/2)));
        }
     }
     
