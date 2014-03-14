@@ -4,7 +4,9 @@
 // https://github.com/Miserlou/OpenSpritz
 
 // Please don't abuse this.
-var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+var readability_token = 'x';
+//var readability_token = '172b057cd7cfccf27b60a36f16b1acde12783893';
+//763c40694598f2edf6e43b556725256c66f72e82
 
 // Create the view from the remote resource.
 function create_spritz(){
@@ -22,7 +24,8 @@ function create_spritz(){
             // I suppose it's better to add that to spritz.html
             $('#spritz_selector')
             .after('<input type="range" id="spritz_slider" min="1" max="10" value="1">')
-            .after('<button type="button" id="spritz_toggle">Play</button>');
+            .after('<button type="button" id="spritz_toggle">Play</button>')
+            .after('<input type="text" id="spritz_readability_token"/>');
         },'html');
     };
 
@@ -247,7 +250,7 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + readability_token +"&callback=?",
+    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + $('#spritz_readability_token').val() +"&callback=?",
     function (data) {
 
         if(data.error){
