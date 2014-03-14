@@ -222,7 +222,7 @@ function pivot(word){
     bestLetterDiff = preMiddle - bestLetter;
 
 
-    var padding = 22 - length;
+    var padding = 23 - length;
     
     if (padding >=2){
        if (padding % 2 === 0){
@@ -234,10 +234,8 @@ function pivot(word){
        }
     }
     
-    
-    
-    startPadding = '';//startPadding.replace(/\./g, "<span class='invisible'>.</span>");
-    endPadding = '';//endPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
     
     var result;
     result = "<span class='spritz_start'>" + startPadding + start.slice(0, start.length -1);
