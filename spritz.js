@@ -225,16 +225,14 @@ function pivot(word){
     var padding = 22 - length;
     if (padding >=2){
        if (padding % 2 === 0){
-          startPadding  = endPadding = ('.'.repeat(padding/2));
+          startPadding  = ('.'.repeat((padding/2)+ bestLetterDiff));
+          endPadding = ('.'.repeat((padding/2)- bestLetterDiff));
        }else{
-          startPadding  = ('.'.repeat((padding+1)/2));
-          endPadding = ('.'.repeat((padding-1)/2));
+          startPadding  = ('.'.repeat(((padding+1)/2)+ bestLetterDiff));
+          endPadding = ('.'.repeat(((padding-1)/2)+ bestLetterDiff));
        }
     }
     
-    startPadding = startPadding + bestLetterDiff;
-    endPadding = endPadding - bestLetterDiff;
-
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
     
