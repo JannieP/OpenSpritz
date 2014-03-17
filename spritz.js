@@ -174,10 +174,12 @@ function spritzify(input){
 
 // Find the red-character of the current word.
 function pivot(word){
-    var length = word.length;
+var length = word.length;
     
     var start = '';
+    var middle = '';
     var end = '';
+   
     var startPadding = '';
     var endPadding = '';
 
@@ -207,24 +209,22 @@ function pivot(word){
         default:
             bestLetter = 5; // fifth
     };
-
-    start = word.slice(0, bestLetter);
+    
+    word = decodeEntities(word);
+    start = word.slice(0, bestLetter-1);
+    middle = word.slice(bestLetter-1,bestLetter);
     end = word.slice(bestLetter, length);
-
+    
     var startPaddingLength = (11-bestLetter);
     var endPaddingLength = (11-(word.length-bestLetter));
     
     if (startPaddingLength >= 0 && endPaddingLength >= 0){
-
-          startPadding  = ('.'.repeat(startPaddingLength));
-
-          endPadding = ('.'.repeat(endPaddingLength));
-
+       startPadding  = ('.'.repeat(startPaddingLength));
+       endPadding = ('.'.repeat(endPaddingLength));
     }
     
-    
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
-    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");   
     
     var result;
     result = "<span class='spritz_start'>" + startPadding;
@@ -235,7 +235,7 @@ function pivot(word){
     result = result + end;
     result = result + endPadding;
     result = result + "</span>";
-    
+
     return result;
 }
 
