@@ -80,7 +80,17 @@ function spritzify(input){
     // Split on any spaces.
     var all_words = input.split(/\s+/);
     
+    // The reader won't stop if the selection starts or ends with spaces
+    if (all_words[0] == "")
+    {
+        all_words = all_words.slice(1, all_words.length);
+    }
 
+    if (all_words[all_words.length - 1] == "")
+    {
+        all_words = all_words.slice(0, all_words.length - 1);
+    }
+    
     var word = '';
     var result = '';
 
@@ -118,31 +128,36 @@ function spritzify(input){
     var currentWord = 0;
     var running = false;
     var spritz_timers = new Array();
+    
+    document.getElementById("spritz_slider").addEventListener("change", function() {
+        updateValues($('#spritz_slider').val() - 1);
+    });
 
-    $('#spritz_toggle').click(function() {
+    document.getElementById("spritz_toggle").addEventListener("click", function() {
         if(running) {
             stopSpritz();
         } else {
             startSpritz();
         }
     });
-
-    $('#spritz_slider').change(function() {
-        updateValues($('#spritz_slider').val() - 1);
-    });
-
+    
     function updateValues(i) {
-        $('#spritz_slider').val(i);
+
+        document.getElementById("spritz_slider").value = i;
         var p = pivot(all_words[i]);
-        $('#spritz_result').html(p);
+        document.getElementById("spritz_result").innerHTML = p;
         currentWord = i;
+
     }
 
     function startSpritz() {
-        $('#spritz_toggle').html('Stop');
+        document.getElementById("spritz_toggle").style.display = "block";
+        document.getElementById("spritz_toggle").textContent = "Pause";
+        
         running = true;
+        
         // Set slider max value
-        $('#spritz_slider').attr("max", all_words.length);
+        document.getElementById("spritz_slider").max = all_words.length;
 
         spritz_timers.push(setInterval(function() {
             updateValues(currentWord);
@@ -158,7 +173,7 @@ function spritzify(input){
         for(var i = 0; i < spritz_timers.length; i++) {
             clearTimeout(spritz_timers[i]);
         }
-        $('#spritz_toggle').html('Play');
+        document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
     }
 }
@@ -266,7 +281,7 @@ function spritzifyURL(){
     function (data) {
 
         if(data.error){
-            $('#spritz_result').html("Article extraction failed. Try selecting text instead.");
+            document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.");
             return;
         }
 
