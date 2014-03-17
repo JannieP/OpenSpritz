@@ -74,7 +74,7 @@ function spritz(){
 // The meat!
 function spritzify(input){
 
-    var wpm = parseInt($("#spritz_selector").val(), 10);
+    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
     var ms_per_word = 60000/wpm;
 
     // Split on any spaces.
