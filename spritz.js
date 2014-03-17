@@ -148,6 +148,8 @@ function spritzify(input){
     }
     
     function updateValues(i) {
+         
+        document.getElementById("spritz_slider_result").value = i;
 
         var p = pivot(all_words[i]);
         document.getElementById("spritz_result").innerHTML = p;
