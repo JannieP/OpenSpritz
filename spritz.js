@@ -175,6 +175,7 @@ function spritzify(input){
 // Find the red-character of the current word.
 function pivot(word){
     var length = word.length;
+    
     var start = '';
     var end = '';
     var startPadding = '';
@@ -210,39 +211,17 @@ function pivot(word){
     start = word.slice(0, bestLetter);
     end = word.slice(bestLetter, length);
 
-    var preMiddle;
-    var bestLetterDiff;
-
-    if (length % 2 === 0){
-       preMiddle  = (length/2);
-    }else{
-       preMiddle  = ((length+1)/2);
-    }
-
-    bestLetterDiff = preMiddle - bestLetter;
-
-
-    var padding = 22 - length;
-    startPaddingLength = (11-bestLetter);
-    endPaddingLength = (11-(word.length-bestLetter));
+    var startPaddingLength = (11-bestLetter);
+    var endPaddingLength = (11-(word.length-bestLetter));
     
     if (startPaddingLength >= 0 && endPaddingLength >= 0){
-    
-    //if (padding >=2){
-    //  if (padding % 2 === 0){
+
           startPadding  = ('.'.repeat(startPaddingLength));
-      //    endPadding = ('.'.repeat((padding/2)));
-     //  }else{
-     //     startPadding  = ('.'.repeat(((padding+1)/2)));
+
           endPadding = ('.'.repeat(endPaddingLength));
-     //  }
-   // }
+
     }
     
-    //word = decodeEntities(word);
-    //var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
-    //var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
-    //var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
     
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
