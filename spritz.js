@@ -224,15 +224,20 @@ function pivot(word){
 
     var padding = 22 - length;
     
-    if (padding >=2){
-       if (padding % 2 === 0){
-          startPadding  = ('.'.repeat((padding)));
-          endPadding = ('.'.repeat((padding/2)));
-       }else{
-          startPadding  = ('.'.repeat(((padding+1)/2)));
-          endPadding = ('.'.repeat(((padding-1)/2)));
-       }
-    }
+    //if (padding >=2){
+    //  if (padding % 2 === 0){
+          startPadding  = ('.'.repeat((11-bestLetter)));
+      //    endPadding = ('.'.repeat((padding/2)));
+     //  }else{
+     //     startPadding  = ('.'.repeat(((padding+1)/2)));
+          endPadding = ((11-(word.length-bestLetter)));
+     //  }
+   // }
+    
+    //word = decodeEntities(word);
+    //var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
+    //var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
+    //var end = word.slice(bestLetter, length).replace('.', '&#8226;') + '.'.repeat((11-(word.length-bestLetter)));
     
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
