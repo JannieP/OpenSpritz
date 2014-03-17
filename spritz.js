@@ -31,7 +31,7 @@ function create_spritz(){
         });
     };
 
-    load_jq(spritz_loader);
+    spritz_loader();
 }
 
 function getURL(url, callback) {
