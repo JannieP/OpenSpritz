@@ -21,7 +21,7 @@ function create_spritz(){
                 data = data.replace(/(\r\n|\n|\r)/gm,"");
                 ele.innerHTML = data;
                 document.body.insertBefore(ele, document.body.firstChild);
-                document.getElementById("spritz_toggle").style.display = "none";
+
             };
             
             document.getElementById("spritz_selector").addEventListener("change", function(e) {
@@ -151,7 +151,7 @@ function spritzify(input){
     }
 
     function startSpritz() {
-        document.getElementById("spritz_toggle").style.display = "block";
+        
         document.getElementById("spritz_toggle").textContent = "Pause";
         
         running = true;
