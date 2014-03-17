@@ -23,7 +23,7 @@ function create_spritz(){
                 document.body.insertBefore(ele, document.body.firstChild);
                 document.getElementById("spritz_toggle").style.display = "none";
             };
-
+            
             document.getElementById("spritz_selector").addEventListener("change", function(e) {
                 clearTimeouts();
                 spritz();
