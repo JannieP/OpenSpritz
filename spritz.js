@@ -281,7 +281,7 @@ function spritzifyURL(){
     function (data) {
 
         if(data.error){
-            document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.");
+            document.getElementById("spritz_result").innerText = "Article extraction failed. Try selecting text instead.";
             return;
         }
 
