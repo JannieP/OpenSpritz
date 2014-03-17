@@ -223,16 +223,21 @@ function pivot(word){
 
 
     var padding = 22 - length;
+    startPaddingLength = (11-bestLetter);
+    endPaddingLength = (11-(word.length-bestLetter));
+    
+    if (startPaddingLength >= 0 && endPaddingLength >= 0){
     
     //if (padding >=2){
     //  if (padding % 2 === 0){
-          startPadding  = ('.'.repeat((11-bestLetter)));
+          startPadding  = ('.'.repeat());
       //    endPadding = ('.'.repeat((padding/2)));
      //  }else{
      //     startPadding  = ('.'.repeat(((padding+1)/2)));
-          endPadding = ('.'.repeat((11-(word.length-bestLetter))));
+          endPadding = ('.'.repeat());
      //  }
    // }
+    }
     
     //word = decodeEntities(word);
     //var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
