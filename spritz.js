@@ -227,11 +227,13 @@ function pivot(word){
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
     
     var result;
-    result = "<span class='spritz_start'>" + startPadding + start.slice(0, start.length -1);
+    result = "<span class='spritz_start'>" + startPadding;
+    result = result + start.slice(0, start.length -1);
     result = result + "</span><span class='spritz_pivot'>";
     result = result + start.slice(start.length-1, start.length);
     result = result + "</span><span class='spritz_end'>";
-    result = result + end + endPadding;
+    result = result + end;
+    result = result + endPadding;
     result = result + "</span>";
     
     return result;
