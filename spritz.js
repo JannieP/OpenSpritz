@@ -230,7 +230,7 @@ function pivot(word){
       //    endPadding = ('.'.repeat((padding/2)));
      //  }else{
      //     startPadding  = ('.'.repeat(((padding+1)/2)));
-          endPadding = ('.'.repeat((11-(word.length-bestLetter)));
+          endPadding = ('.'.repeat((11-(word.length-bestLetter))));
      //  }
    // }
     
