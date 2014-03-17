@@ -15,7 +15,12 @@
             <div id="guide_bottom">
 ――――――――――――――――――――――
             </div>
-
+            
+            <div id="togler">
+                <i>[>]</i>
+            </div>
+            
+            <div id="spritz_controls" diaplay="none">
             <select id="spritz_selector">
               <option value="0">Select WPM</option>
               <option value="200">200wpm</option>
@@ -49,6 +54,8 @@
                 <i>[x]</i>
               </a>
             </span>
+            
+            </div>
     </div>
 </div>
 
@@ -67,5 +74,17 @@ $( document ).ready(function() {
         var rez = spritz();
 
     });
+    
+    $( "#togler" ).click(function() {
+        $( "spritz_controls" ).show( "slow" );
+     });
+ 
 });
+
+function hide_spritz(){
+    $('#spritz_spacer').slideUp();
+    $('#spritz_container').slideUp();
+    $('#spritz_holder').slideUp();
+}
+
 </script>
