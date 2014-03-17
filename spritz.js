@@ -71,11 +71,16 @@ function spritz(){
     }
 }
 
+function getWPM(){
+    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
+    return wpm;
+    
+}
+
 // The meat!
 function spritzify(input){
 
-    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
-    var ms_per_word = 60000/wpm;
+    var ms_per_word = 60000/getWPM();
 
     // Split on any spaces.
     var all_words = input.split(/\s+/);
@@ -131,6 +136,10 @@ function spritzify(input){
     
     document.getElementById("spritz_slider").addEventListener("change", function() {
         updateValues(document.getElementById("spritz_slider").value);
+    });
+    
+    document.getElementById("spritz_selector").addEventListener("change", function() {
+       ms_per_word = 60000/getWPM();
     });
 
     document.getElementById("spritz_toggle").addEventListener("click", function() {
