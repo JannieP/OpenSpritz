@@ -57,7 +57,7 @@ function hide_spritz(){
 // Gets the WPM and the selected text, if any.
 function spritz(){
 
-    var wpm = parseInt($("#spritz_selector").val(), 10);
+    var wpm = parseInt(document.getElementById("spritz_selector").value, 10);
     if(wpm < 1){
         return;
     }
