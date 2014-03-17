@@ -278,7 +278,7 @@ function spritzifyURL(){
     var url = document.URL;
 
     //$.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + document.getElementById('spritz_readability_token').value() +"&callback=?",
-    getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + document.getElementById('spritz_readability_token').value() +"&callback=?",
+    getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + document.getElementById('spritz_readability_token').text +"&callback=?",
     function (data) {
 
         if(data.error){
