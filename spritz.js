@@ -13,50 +13,44 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-        $.get("https://rawgithub.com/JannieP/OpenSpritz/master/spritz.html", function(data){
-        //$.get("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
-       
+         getURL("https://rawgithub.com/Miserlou/OpenSpritz/master/spritz.html", function(data){
+            var spritzContainer = document.getElementById("spritz_container");
 
-            if (!($("#spritz_container").length) ) {
-                $("body").prepend(data);
-            }
+            if (!spritzContainer) {
+                var ele = document.createElement("div");
+                data = data.replace(/(\r\n|\n|\r)/gm,"");
+                ele.innerHTML = data;
+                document.body.insertBefore(ele, document.body.firstChild);
+                document.getElementById("spritz_toggle").style.display = "none";
+            };
 
-            
-        },'html');
+            document.getElementById("spritz_selector").addEventListener("change", function(e) {
+                clearTimeouts();
+                spritz();
+            });
+        });
     };
 
     load_jq(spritz_loader);
 }
 
-// jQuery loader: http://coding.smashingmagazine.com/2010/05/23/make-your-own-bookmarklets-with-jquery/
-// This is pretty fucked and should be replaced. Is there anyway we can just force
-// the latest jQ? I wouldn't have a problem with that.
-function load_jq(spritz_loader){
+function getURL(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
 
-    // the minimum version of jQuery we want
-    var v = "1.7.0";
-
-    // check prior inclusion and version
-    if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
-      var done = false;
-      var script = document.createElement("script");
-      script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
-      script.onload = script.onreadystatechange = function(){
-        if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-          done = true;
-          spritz_loader();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            callback(xmlhttp.responseText);
         }
-      };
-      document.getElementsByTagName("head")[0].appendChild(script);
-    } else{
-        spritz_loader();
     }
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
 
 function hide_spritz(){
-    $('#spritz_spacer').slideUp();
-    $('#spritz_container').slideUp();
-    $('#spritz_holder').slideUp();
+    document.getElementById("spritz_spacer").style.display = "none";
+    document.getElementById("spritz_container").style.display = "none";
+    document.getElementById("spritz_holder").style.display = "none";
 }
 
 // Entry point to the beef.
@@ -85,6 +79,7 @@ function spritzify(input){
 
     // Split on any spaces.
     var all_words = input.split(/\s+/);
+    
 
     var word = '';
     var result = '';
