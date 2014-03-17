@@ -319,3 +319,11 @@ String.prototype.repeat = function( num ){
     return new Array( num + 1 ).join( this );
 }
 
+function decodeEntities(s){
+    var str, temp= document.createElement('p');
+    temp.innerHTML= s;
+    str= temp.textContent || temp.innerText;
+    temp=null;
+    return str;
+}
+
