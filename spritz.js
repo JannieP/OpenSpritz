@@ -130,7 +130,7 @@ function spritzify(input){
     var spritz_timers = new Array();
     
     document.getElementById("spritz_slider").addEventListener("change", function() {
-        updateValues(document.getElementById("spritz_slider").value - 1);
+        updateValues(document.getElementById("spritz_slider").value);
     });
 
     document.getElementById("spritz_toggle").addEventListener("click", function() {
@@ -141,10 +141,14 @@ function spritzify(input){
         }
     });
     
-    function updateValues(i) {
-
+    function updateSlider(i){
         document.getElementById("spritz_slider").value = i;
         document.getElementById("spritz_slider_result").value = document.getElementById("spritz_slider").value
+        return i;
+    }
+    
+    function updateValues(i) {
+
         var p = pivot(all_words[i]);
         document.getElementById("spritz_result").innerHTML = p;
         currentWord = i;
@@ -161,7 +165,7 @@ function spritzify(input){
         document.getElementById("spritz_slider").max = all_words.length;
 
         spritz_timers.push(setInterval(function() {
-            updateValues(currentWord);
+            updateValues(updateSlider(currentWord));
             currentWord++;
             if(currentWord >= all_words.length) {
                 currentWord = 0;
