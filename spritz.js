@@ -222,17 +222,17 @@ function pivot(word){
     bestLetterDiff = preMiddle - bestLetter;
 
 
-    var padding = end.length - start.length;
+    var padding = 22 - length;
     
-    //if (padding >=2){
-       //if (padding % 2 === 0){
+    if (padding >=2){
+       if (padding % 2 === 0){
           startPadding  = ('.'.repeat((padding)));
-          //endPadding = ('.'.repeat((padding/2)));
-       //}else{
-          //startPadding  = ('.'.repeat(((padding+1)/2)));
-          //endPadding = ('.'.repeat(((padding-1)/2)));
-       //}
-    //}
+          endPadding = ('.'.repeat((padding/2)));
+       }else{
+          startPadding  = ('.'.repeat(((padding+1)/2)));
+          endPadding = ('.'.repeat(((padding-1)/2)));
+       }
+    }
     
     startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");
