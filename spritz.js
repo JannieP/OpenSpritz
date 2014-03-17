@@ -230,11 +230,11 @@ function pivot(word){
     
     //if (padding >=2){
     //  if (padding % 2 === 0){
-          startPadding  = ('.'.repeat());
+          startPadding  = ('.'.repeat(startPaddingLength));
       //    endPadding = ('.'.repeat((padding/2)));
      //  }else{
      //     startPadding  = ('.'.repeat(((padding+1)/2)));
-          endPadding = ('.'.repeat());
+          endPadding = ('.'.repeat(endPaddingLength));
      //  }
    // }
     }
