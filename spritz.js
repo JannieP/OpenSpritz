@@ -277,7 +277,8 @@ function getSelectionText() {
 function spritzifyURL(){
     var url = document.URL;
 
-    $.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + $('#spritz_readability_token').val() +"&callback=?",
+    //$.getJSON("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + document.getElementById('spritz_readability_token').value() +"&callback=?",
+    getURL("https://www.readability.com/api/content/v1/parser?url="+ encodeURIComponent(url) +"&token=" + document.getElementById('spritz_readability_token').value() +"&callback=?",
     function (data) {
 
         if(data.error){
@@ -295,8 +296,8 @@ function spritzifyURL(){
             author = "By " + data.author + ". ";
         }
 
-        var body = jQuery(data.content).text(); // Textify HTML content.
-        body = $.trim(body); // Trim trailing and leading whitespace.
+        var body = data.text // Textify HTML content.
+        body = body.trim(); // Trim trailing and leading whitespace.
         body = body.replace(/\s+/g, ' '); // Shrink long whitespaces.
 
         var text_content = title + author + body;
