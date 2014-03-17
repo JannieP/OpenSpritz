@@ -144,6 +144,7 @@ function spritzify(input){
     function updateValues(i) {
 
         document.getElementById("spritz_slider").value = i;
+        document.getElementById("spritz_slider_result").value = document.getElementById("spritz_slider").value
         var p = pivot(all_words[i]);
         document.getElementById("spritz_result").innerHTML = p;
         currentWord = i;
