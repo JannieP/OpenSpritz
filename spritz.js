@@ -211,6 +211,7 @@ var length = word.length;
     };
     
     word = decodeEntities(word);
+    
     start = word.slice(0, bestLetter-1);
     middle = word.slice(bestLetter-1,bestLetter);
     end = word.slice(bestLetter, length);
@@ -227,8 +228,9 @@ var length = word.length;
     endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");   
     
     var result;
-    result = "<span class='spritz_start'>" + startPadding;
-    result = result + start.slice(0, start.length -1);
+    result = "<span class='spritz_start'>";
+    result = result + startPadding;
+    result = result + start;
     result = result + "</span><span class='spritz_pivot'>";
     result = result + middle;
     result = result + "</span><span class='spritz_end'>";
