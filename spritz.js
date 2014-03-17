@@ -30,7 +30,7 @@ function create_spritz(){
             });
         });
     };
-
+ 
     spritz_loader();
 }
 
