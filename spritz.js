@@ -130,7 +130,7 @@ function spritzify(input){
     var spritz_timers = new Array();
     
     document.getElementById("spritz_slider").addEventListener("change", function() {
-        updateValues($('#spritz_slider').val() - 1);
+        updateValues(document.getElementById("spritz_slider").value - 1);
     });
 
     document.getElementById("spritz_toggle").addEventListener("click", function() {
