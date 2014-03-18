@@ -129,11 +129,8 @@ function spritzify(input){
     }
 
     all_words = temp_words.slice(0);
-
     var currentWord = 0;
-    var running = false;
-    var spritz_timers = new Array();
-    
+
     document.getElementById("spritz_slider").addEventListener("change", function() {
         updateValues(document.getElementById("spritz_slider").value);
     });
@@ -143,7 +140,7 @@ function spritzify(input){
     });
 
     document.getElementById("spritz_toggle").addEventListener("click", function() {
-        if(running) {
+        if(document.getElementById("spritz_selector").disabled) {
             stopSpritz();
         } else {
             startSpritz();
@@ -185,11 +182,8 @@ function spritzify(input){
     }
 
     function stopSpritz() {
-        spritz_timers = new Array();
         document.getElementById("spritz_selector").disabled=false;
-        //for(var i = 0; i < spritz_timers.length; i++) {
-     //       clearTimeout(spritz_timers[i]);
-       // }
+        clearTimeouts();
         document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
     }
@@ -273,6 +267,7 @@ function getBestLetter(wordLength){
     return bestLetter;
     
 }
+
 // Get the currently selected text, if any.
 // Shameless pinched from StackOverflow.
 function getSelectionText() {
