@@ -166,7 +166,7 @@ function spritzify(input){
     }
 
     function startSpritz() {
-        document.getElementById("spritz_toggle").disabled=true;
+        document.getElementById("spritz_selector").disabled=true;
         document.getElementById("spritz_toggle").textContent = "Pause";
         
         running = true;
@@ -186,7 +186,7 @@ function spritzify(input){
 
     function stopSpritz() {
         spritz_timers = new Array();
-        document.getElementById("spritz_toggle").disabled=false;
+        document.getElementById("spritz_selector").disabled=false;
         //for(var i = 0; i < spritz_timers.length; i++) {
      //       clearTimeout(spritz_timers[i]);
        // }
