@@ -67,7 +67,7 @@ function spritz(){
         spritzify(selection);
     }
     else{
-        spritzifyURL();
+        alert('Please select text to Spritify!');
     }
 }
 
@@ -166,7 +166,7 @@ function spritzify(input){
     }
 
     function startSpritz() {
-        
+        document.getElementById("spritz_toggle").disabled=true;
         document.getElementById("spritz_toggle").textContent = "Pause";
         
         running = true;
@@ -185,9 +185,11 @@ function spritzify(input){
     }
 
     function stopSpritz() {
-        for(var i = 0; i < spritz_timers.length; i++) {
-            clearTimeout(spritz_timers[i]);
-        }
+        spritz_timers = new Array();
+        document.getElementById("spritz_toggle").disabled=false;
+        //for(var i = 0; i < spritz_timers.length; i++) {
+     //       clearTimeout(spritz_timers[i]);
+       // }
         document.getElementById("spritz_toggle").textContent = "Play";
         running = false;
     }
