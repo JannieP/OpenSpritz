@@ -195,7 +195,8 @@ function spritzify(input){
 
 // Find the red-character of the current word.
 function pivot(word){
-var length = word.length;
+     
+    var length = word.length;
     
     var start = '';
     var middle = '';
@@ -204,8 +205,45 @@ var length = word.length;
     var startPadding = '';
     var endPadding = '';
 
+    var bestLetter = getBestLetter(length);
+
+    word = decodeEntities(word);
+    
+    start = word.slice(0, bestLetter-1);
+    middle = word.slice(bestLetter-1,bestLetter);
+    end = word.slice(bestLetter, length);
+    
+    var startPaddingLength = (11-bestLetter);
+    var endPaddingLength = (11-(word.length-bestLetter));
+    
+    if (startPaddingLength >= 0 && endPaddingLength >= 0){
+       startPadding  = (repeat('.',startPaddingLength));
+       endPadding = (repeat('.',endPaddingLength));
+    }
+    
+    startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
+    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");   
+    
+    var result;
+    result = "<span class='spritz_start'>";
+    result = result + startPadding;
+    result = result + start;
+    result = result + "</span><span class='spritz_pivot'>";
+    result = result + middle;
+    result = result + "</span><span class='spritz_end'>";
+    result = result + end;
+    result = result + endPadding;
+    result = result + "</span>";
+
+    return result;
+}
+
+//Get best highlight position
+function getBestLetter(wordLength){
+     
     var bestLetter = 1;
-    switch (length) {
+    
+    switch (wordLength) {
         case 1:
             bestLetter = 1; // first
             break;
@@ -230,38 +268,9 @@ var length = word.length;
         default:
             bestLetter = 5; // fifth
     };
+    return bestLetter;
     
-    word = decodeEntities(word);
-    
-    start = word.slice(0, bestLetter-1);
-    middle = word.slice(bestLetter-1,bestLetter);
-    end = word.slice(bestLetter, length);
-    
-    var startPaddingLength = (11-bestLetter);
-    var endPaddingLength = (11-(word.length-bestLetter));
-    
-    if (startPaddingLength >= 0 && endPaddingLength >= 0){
-       startPadding  = ('.'.repeat(startPaddingLength));
-       endPadding = ('.'.repeat(endPaddingLength));
-    }
-    
-    startPadding = startPadding.replace(/\./g, "<span class='invisible'>.</span>");
-    endPadding = endPadding.replace(/\./g, "<span class='invisible'>.</span>");   
-    
-    var result;
-    result = "<span class='spritz_start'>";
-    result = result + startPadding;
-    result = result + start;
-    result = result + "</span><span class='spritz_pivot'>";
-    result = result + middle;
-    result = result + "</span><span class='spritz_end'>";
-    result = result + end;
-    result = result + endPadding;
-    result = result + "</span>";
-
-    return result;
 }
-
 // Get the currently selected text, if any.
 // Shameless pinched from StackOverflow.
 function getSelectionText() {
@@ -337,11 +346,12 @@ function clearTimeouts(){
     }
 }
 
-// Let strings repeat themselves,
-// because JavaScript isn't as awesome as Python.
-String.prototype.repeat = function( num ){
-    return new Array( num + 1 ).join( this );
-}
+var repeat = function(s, times) {
+   if (times < 1) return '';
+   if (times % 2) return repeat(s, times - 1) + s;
+   var half = repeat(s, times / 2);
+   return half + half;
+};
 
 function decodeEntities(s){
     var str, temp= document.createElement('p');
