@@ -171,14 +171,14 @@ function spritzify(input){
         // Set slider max value
         document.getElementById("spritz_slider").max = all_words.length;
 
-        spritz_timers.push(setInterval(function() {
+        setInterval(function() {
             updateValues(updateSlider(currentWord));
             currentWord++;
             if(currentWord >= all_words.length) {
                 currentWord = 0;
                 stopSpritz();
             }
-        }, ms_per_word));
+        }, ms_per_word);
     }
 
     function stopSpritz() {
