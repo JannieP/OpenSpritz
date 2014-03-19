@@ -172,6 +172,7 @@ function spritzify(input){
             currentWord++;
             if(currentWord >= all_words.length) {
                 currentWord = 0;
+                updateValues(updateSlider(currentWord));
                 stopSpritz();
             }
         }, ms_per_word);
