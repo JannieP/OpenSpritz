@@ -336,11 +336,18 @@ function spritzifyURL(){
 
 // This is a hack using the fact that browers sequentially id the timers.
 function clearTimeouts(){
+     
     var id = window.setTimeout(function() {}, 0);
 
     while (id--) {
         window.clearTimeout(id);
     }
+    
+    id = window.setInterval(function() {}, 0);
+    while (id--) {
+        window.clearInterval(i);
+    }
+    
 }
 
 var repeat = function(s, times) {
