@@ -345,7 +345,7 @@ function clearTimeouts(){
     
     id = window.setInterval(function() {}, 0);
     while (id--) {
-        window.clearInterval(i);
+        window.clearInterval(id);
     }
     
 }
