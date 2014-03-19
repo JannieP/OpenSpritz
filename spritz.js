@@ -135,10 +135,6 @@ function spritzify(input){
         updateValues(document.getElementById("spritz_slider").value);
     });
     
-    document.getElementById("spritz_selector").addEventListener("change", function() {
-       ms_per_word = 60000/getWPM();
-    });
-
     document.getElementById("spritz_toggle").addEventListener("click", function() {
         if(document.getElementById("spritz_selector").disabled) {
             stopSpritz();
