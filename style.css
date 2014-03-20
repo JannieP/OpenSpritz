@@ -13,7 +13,18 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99999999999999999;
+    z-index: 10000;
+}
+
+#spritz_controls{
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    padding: 0px;
+    margin: 0px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10001;
 }
 
 #spritz_spacer{
