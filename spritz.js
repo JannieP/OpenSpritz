@@ -22,6 +22,8 @@ function create_spritz(){
                 ele.innerHTML = data;
                 document.body.insertBefore(ele, document.body.firstChild);
 
+            }else{
+                 show_spritz();
             };
             
             document.getElementById("spritz_selector").addEventListener("change", function(e) {
@@ -51,6 +53,12 @@ function hide_spritz(){
     document.getElementById("spritz_spacer").style.display = "none";
     document.getElementById("spritz_container").style.display = "none";
     document.getElementById("spritz_holder").style.display = "none";
+}
+
+function show_spritz(){
+    document.getElementById("spritz_spacer").style.display = "block";
+    document.getElementById("spritz_container").style.display = "block";
+    document.getElementById("spritz_holder").style.display = "block";
 }
 
 // Entry point to the beef.
