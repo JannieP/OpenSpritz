@@ -16,6 +16,10 @@
 ――――――――――――――――――――――
             </div>
 
+           </div>
+           
+           <div id=spritz_controls>
+           
             <select id="spritz_selector">
               <option value="0">Select WPM</option>
               <option value="200">200wpm</option>
@@ -36,16 +40,18 @@
             </select>
             
             </br>
-            <button type="button" id="spritz_toggle">Play</button>
-           
-            <input type="range" step="1" id="spritz_slider" min="1" max="10" value="1">
             
+            <button type="button" id="spritz_toggle">Play</button>
+            
+            </br>           
+            
+            <input type="range" step="1" id="spritz_slider" min="1" max="10" value="1">
             <output id="spritz_slider_result"  for="spritz_slider" />
             
             <input type="hidden" id="spritz_readability_token" value="763c40694598f2edf6e43b556725256c66f72e82"/>
 
             <span id="spritz_credits">
-              <a href="http://github.com/Miserlou/OpenSpritz">
+              <a href="http://github.com/JannieP/OpenSpritz">
                 <i>OpenSpritz</i>
               </a>
               <a href="" onclick="hide_spritz(); return false;">
