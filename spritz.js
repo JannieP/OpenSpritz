@@ -13,7 +13,7 @@ function create_spritz(){
 
      spritz_loader = function() {
 
-         getURL("https://rawgithub.com/JannieP/OpenSpritz/master/spritz.html", function(data){
+         getURL("https://rawgit.com/JannieP/OpenSpritz/master/spritz.html", function(data){
             var spritzContainer = document.getElementById("spritz_container");
 
             if (!spritzContainer) {
